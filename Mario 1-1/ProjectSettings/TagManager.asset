@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: sky
+    uniqueID: 3289413533
+    locked: 0
+  - name: cloud
+    uniqueID: 3296212973
+    locked: 0
+  - name: bush
+    uniqueID: 3358534919
+    locked: 0
+  - name: ground
+    uniqueID: 3033749235
+    locked: 0
