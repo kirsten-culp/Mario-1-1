@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GoombaController : MonoBehaviour {
     public float speed;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

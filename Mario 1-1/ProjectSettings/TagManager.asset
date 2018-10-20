@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - pickUp
   - wallHitBox
+  - wall
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - wall
   - 
   - 
   - 
@@ -55,6 +56,9 @@ TagManager:
     locked: 0
   - name: ground
     uniqueID: 3033749235
+    locked: 0
+  - name: wall
+    uniqueID: 1189625941
     locked: 0
   - name: Player
     uniqueID: 10570829

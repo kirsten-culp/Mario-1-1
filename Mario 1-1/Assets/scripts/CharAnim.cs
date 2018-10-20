@@ -19,5 +19,10 @@ public class CharAnim : MonoBehaviour {
         } else {
             anim.SetBool("isRunning", false);
             }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            anim.SetTrigger("jump");
+        }
         }
 }

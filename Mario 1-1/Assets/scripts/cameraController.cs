@@ -6,6 +6,8 @@ public class cameraController : MonoBehaviour {
 
     public GameObject player;
 
+    private Vector3 position;
+
     private Vector3 offset;
 
 	// Use this for initialization
@@ -15,9 +17,10 @@ public class cameraController : MonoBehaviour {
 
     void Update()
     {
-        transform.position = player.transform.position + offset;
+        
     }
     // Update is called once per frame
     void LateUpdate () {
+        transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
     }
 }
