@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private AudioSource source;
+    public AudioClip jumpClip;
+
+    public AudioClip Pickup_Coin6;
+
+    private float volLowRange = .5f;
+    private float volHighRange = 1.0f;
 
     private Rigidbody2D rb2d;
     private bool facingRight = true;
@@ -17,9 +24,9 @@ public class PlayerController : MonoBehaviour
     public float checkRadius;
     public LayerMask allGround;
 
-    // private float jumpTimeCounter;
-    //public float jumpTime;
-    //private bool isJumping;
+    private float jumpTimeCounter;
+    public float jumpTime;
+    private bool isJumping;
 
     //audio stuff
 
@@ -30,19 +37,18 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-
     }
 
     void Awake()
     {
 
-        // source = GetComponent<AudioSource>();
+    source = GetComponent<AudioSource>();
 
     }
 
-    private void Update()
+    void Update()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -51,9 +57,9 @@ public class PlayerController : MonoBehaviour
 
         float moveHorizontal = Input.GetAxis("Horizontal");
 
-        //Vector2 movement = new Vector2(moveHorizontal, 0);
+        Vector2 movement = new Vector2(moveHorizontal, 0);
 
-        // rb2d.AddForce(movement * speed);
+        rb2d.AddForce(movement * speed);
 
         rb2d.velocity = new Vector2(moveHorizontal * speed, rb2d.velocity.y);
 
@@ -80,6 +86,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("pickUp"))
         {
            other.gameObject.SetActive(false);
+           float vol = Random.Range(volLowRange, volHighRange);
+           source.PlayOneShot(Pickup_Coin6);
         }
     }
 
@@ -100,15 +108,14 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                // rb2d.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
+                rb2d.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
                 rb2d.velocity = Vector2.up * jumpforce;
-
+                float vol = Random.Range(volLowRange, volHighRange);
+                source.PlayOneShot(jumpClip);
 
                 // Audio stuff
-
-
-
             }
         }
+        
     }
 }
