@@ -8,6 +8,8 @@ TagManager:
   - pickUp
   - wallHitBox
   - wall
+  - Enemy
+  - CoinBox
   layers:
   - Default
   - TransparentFX
@@ -54,11 +56,11 @@ TagManager:
   - name: bush
     uniqueID: 3358534919
     locked: 0
-  - name: ground
-    uniqueID: 3033749235
-    locked: 0
   - name: wall
     uniqueID: 1189625941
+    locked: 0
+  - name: ground
+    uniqueID: 3033749235
     locked: 0
   - name: Player
     uniqueID: 10570829
