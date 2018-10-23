@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
 
+    private AudioSource source;
+    public AudioClip deathClip;
+    private float volLowRange = .5f;
+    private float volHighRange = 1.0f;
+
     private Animator anim;
     public float speed;
     public LayerMask isGround;
@@ -17,9 +22,14 @@ public class EnemyController : MonoBehaviour {
 	void Start () {
         anim = GetComponent<Animator>();
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
+    // Update is called once per frame
+
+    void FixedUpdate () {
         transform.Translate(speed * Time.deltaTime, 0, 0);
 
         wallHit = Physics2D.OverlapBox(wallHitBox.position, new Vector2(wallHitWidth, wallHitHeight), 0, isGround);
@@ -33,9 +43,11 @@ public class EnemyController : MonoBehaviour {
     {
         if(collision.collider.tag == "Player")
         {
+            float vol = Random.Range(volLowRange, volHighRange);
+            source.PlayOneShot(deathClip);
             anim.SetTrigger("isDead");
             Debug.Log("I loved living");
-            Destroy(gameObject);
+            Destroy(gameObject, 0.25f);
         }
     }
 
